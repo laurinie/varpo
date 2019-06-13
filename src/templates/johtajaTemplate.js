@@ -1,15 +1,9 @@
 import React, {Component} from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
+import  ReactMarkdown from  'react-markdown';
 
 class Johtaja extends Component{
-    renderContent(j){
-        let component =[];
-        for(let p in j){
-            component.push(<p>{j[p]}</p>)
-        }
-        return component
-    }
     render(){
         console.log(this.props.data.contentfulJohtaja)
         const j = this.props.data.contentfulJohtaja
@@ -17,7 +11,11 @@ class Johtaja extends Component{
         return (
             <div>
                 <h1>{j.name}</h1>
-                {this.renderContent(j)}
+                <img src = {j.picture.file.url}></img>
+                <p>{j.shortDescription}</p>
+                <p>{j.phone}</p>
+                <p>{j.email}</p>
+                <ReactMarkdown source={j.description.description}/>
             </div>
         )
 
@@ -35,5 +33,13 @@ query johtajaQuery($name:String!){
         shortDescription
         phone
         email
+        description{
+            description
+        }
+        picture{
+            file{
+                url
+            }
+        }
     }
 }`
