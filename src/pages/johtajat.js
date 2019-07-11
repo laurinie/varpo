@@ -13,7 +13,7 @@ const Johtaja = ({node})=>{
 }
 const Johtajat = ({data}) => (
   <Layout>
-    <SEO title="Home" />
+    <SEO title="johtajat" />
     <ul>{data.allContentfulJohtaja.edges.map((edge)=><Johtaja node={edge.node}/>)}</ul>
   </Layout>
 )
