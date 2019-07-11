@@ -7,7 +7,7 @@ import SEO from "../components/seo"
 // }
 const IndexPage = ({data}) => (
   <Layout>
-    <SEO title="Home" />
+    <SEO title="Varpo" />
     <div>< ReactMarkdown source={data.allContentfulEtusivu.edges[0].node.frontpageContent.frontpageContent}/></div>
   </Layout>
 )
