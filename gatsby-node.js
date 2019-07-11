@@ -20,7 +20,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
                 if (result.errors) { reject(result.errors) }
                 result.data.allContentfulJohtaja.edges.forEach((edge) => {
                     createPage({
-                        path: edge.node.name,
+                        path: "johtajat/"+edge.node.name,
                         component:johtajaTemplate,
                         context:{
                             name:edge.node.name,

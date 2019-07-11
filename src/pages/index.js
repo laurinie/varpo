@@ -8,7 +8,7 @@ import SEO from "../components/seo"
 const IndexPage = ({data}) => (
   <Layout>
     <SEO title="Home" />
-    <div>< ReactMarkdown source={data.allContentfulEtusivuFrontpageContentTextNode.edges[0].node.frontpageContent}/></div>
+    <div>< ReactMarkdown source={data.allContentfulEtusivu.edges[0].node.frontpageContent.frontpageContent}/></div>
   </Layout>
 )
 
@@ -16,10 +16,12 @@ export default IndexPage
 
 export const pageQuery = graphql`
 query MyQuery {
-  allContentfulEtusivuFrontpageContentTextNode {
+  allContentfulEtusivu {
     edges {
       node {
-        frontpageContent
+        frontpageContent {
+          frontpageContent
+        }
       }
     }
   }
