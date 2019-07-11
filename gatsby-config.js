@@ -59,8 +59,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Varpo`,
-        short_name: `starter`,
+        name: `Vartiovuoren Pojat`,
+        short_name: `varpo.fi`,
         start_url: `/`,
         background_color: `#6e0000`,
         theme_color: `#6e0000`,
