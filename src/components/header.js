@@ -2,34 +2,24 @@ import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
 import Menu from "./menu";
-
-const Header = ({ siteTitle,links }) => (
+import VarpoLogo from "../images/varpo_tunnus-color-transparent.png";
+const Header = ({ siteTitle, links }) => (
   <header
-    style={{
-      background: `red`,
-      marginBottom: `1.45rem`,
-    }}
+    className="header"
   >
-    <div
-      style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
-      }}
-    >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-          }}
-        >
+    
+    <div className="nav_bar">
+
+      <h1>
+        <Link to="/">
           {siteTitle}
         </Link>
       </h1>
-      <Menu links = {links}/>
+      <Menu links={links} />
+      <img className="logo" src={VarpoLogo}></img>
     </div>
+    <div className="nav_background" />
+
   </header>
 )
 
