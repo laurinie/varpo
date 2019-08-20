@@ -1,14 +1,11 @@
 import React from "react";
 
-class Slice extends React.Component {
+class Article extends React.Component {
   render() {
     return (
-      <div className="slice">
-        <div className={"triangle-left"} />
-        <div className="slice-content">
+      <div className={"about "+this.props.style}>
           <h2>{this.props.content.title}</h2>
           <p>{this.props.content.textBody.textBody}</p>
-        </div>
       </div>
     )
   }
@@ -29,4 +26,4 @@ class Slice extends React.Component {
   // </svg>
 }
 
-export default Slice;
+export default Article;
