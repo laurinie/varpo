@@ -8,7 +8,7 @@ import SEO from "../components/seo"
 
 class Johtaja extends Component {
     render() {
-        console.log(this.props.data.contentfulJohtaja)
+        // console.log(this.props.data.contentfulJohtaja)
         const j = this.props.data.contentfulJohtaja
 
         return (
