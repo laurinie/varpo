@@ -10,11 +10,11 @@ const Header = ({ siteTitle, links }) => (
     
     <div className="nav_bar">
 
-      <h1>
+      <h2>
         <Link to="/">
           {siteTitle}
         </Link>
-      </h1>
+      </h2>
       <Menu links={links} />
       <img className="logo" src={VarpoLogo}></img>
     </div>

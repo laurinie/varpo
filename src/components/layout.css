@@ -7,6 +7,7 @@
   font-family: "Raleway-BoldItalic";
   src: url("../fonts/Raleway-BoldItalic.ttf");
 }
+
 @font-face {
   font-family: "Raleway-ExtraBold";
   src: url("../fonts/Raleway-ExtraBold.ttf");
@@ -19,23 +20,22 @@ html {
 body {
   margin: 0px;
   font-family: "Raleway-Medium";
-  background-color:#383838;
-  color:#fff
+  background-color: #383838;
+  color: #fff
 }
 
 h1 {
   font-family: "Raleway-BoldItalic";
-  
 }
-.logo{
+
+.logo {
   position: absolute;
   right: 0;
   padding: 10px;
-  
 }
-.content{
-  padding:10px;
 
+.content {
+  padding: 10px;
 }
 
 header {
@@ -45,8 +45,10 @@ header {
 }
 
 .header_img {
-  object-fit: cover; /* Do not scale the image */
-  object-position: center; /* Center the image within the element */
+  object-fit: cover;
+  /* Do not scale the image */
+  object-position: center;
+  /* Center the image within the element */
   height: 100vh;
   width: 100%;
 }
@@ -77,14 +79,17 @@ header {
   /* padding-left: 20px; */
   width: 100%;
 }
-.nav_bar img{
+
+.nav_bar img {
   height: 4em;
 }
-.nav_bar h1 a{
-  color: white;
 
+.nav_bar h2 a {
+  color: white;
+  padding: 25px;
 }
-a{
+
+a {
   text-decoration: none;
 }
 
@@ -98,45 +103,77 @@ a{
   right: 0;
   top: 53vh;
 }
+
 .triangle-left {
-  position: absolute;
-  right: 0;
-  top: 50vh;
   width: 0;
   height: 0;
   border-top: 25vh solid transparent;
-  border-right: 20em solid #ff0000;
+  border-right: 30em solid #ff0000;
   border-bottom: 25vh solid transparent;
 }
+
 .slice {
   position: absolute;
   right: 0;
-  top: 134px;
+  top: 50vh;
+
+}
+.slice-content{
+  position: absolute;
+  top: 15vh;
+  right: 0;
+  width: 30em;
+  text-align: right;
+  padding: 10px;
 }
 .post-shape h1 {
   position: relative;
   left: 400px;
   color: white;
 }
-.sidenav{
+
+.sidenav {
   padding-top: 35px;
   display: inline;
   color: white;
   overflow: hidden;
 }
+
 .sidenav a {
   color: white;
   padding: 10px;
 }
+
+.footer {
+  height: 200px;
+  width: 100%;
+  background-color: #fff
+}
+
 @media (max-width: 750px) {
-  h1{
+  h1 {
     font-size: 2.5em !important;
   }
-  .nav_bar h1 a{
-    
+  .nav_bar h1 a {
     font-size: 0.75em !important;
   }
- }
+  .triangle-left {
+    width: 0;
+    height: 0;
+    border-top: 25vh solid transparent;
+    border-right: 75vw solid #ff0000;
+    border-bottom: 25vh solid transparent;
+  }
+  .slice-content{
+    position: absolute;
+    top: 15vh;
+    right: 0;
+    width: 50vw;
+    text-align: right;
+    padding: 10px;
+  }
+}
+
 /* html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;

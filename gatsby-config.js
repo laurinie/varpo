@@ -8,34 +8,34 @@ module.exports = {
         "name": "Etusivu",
         "url": "/"
       },
-      {
-        "name": "Kokousajat",
-        "url": "kokousajat"
-      },
-      {
-        "name": "Tapahtumat ja tiedotteet",
-        "url": "kalenteri"
-      },
+      // {
+      //   "name": "Kokousajat",
+      //   "url": "kokousajat"
+      // },
+      // {
+      //   "name": "Tapahtumat ja tiedotteet",
+      //   "url": "kalenteri"
+      // },
       {
         "name": "Yhteystiedot",
         "url": "johtajat"
       },
-      {
-        "name": "Tietoja lippukunnasta",
-        "url": "lippukunta"
-      },
-      {
-        "name": "Kuvagalleria",
-        "url": "https://get.google.com/albumarchive/117985396226675248453"
-      },
-      {
-        "name": "Vanhempainyhdistys",
-        "url": "vanhempainyhdistys"
-      },
-      {
-        "name": "Kilpi",
-        "url": "kilpi"
-      }
+      // {
+      //   "name": "Tietoja lippukunnasta",
+      //   "url": "lippukunta"
+      // },
+      // {
+      //   "name": "Kuvagalleria",
+      //   "url": "https://get.google.com/albumarchive/117985396226675248453"
+      // },
+      // {
+      //   "name": "Vanhempainyhdistys",
+      //   "url": "vanhempainyhdistys"
+      // },
+      // {
+      //   "name": "Kilpi",
+      //   "url": "kilpi"
+      // }
     ]
   },
   plugins: [
