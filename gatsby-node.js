@@ -16,7 +16,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
                     }
                 }`
             ).then((result) => {
-                console.log(result);
+                // console.log(result);
                 if (result.errors) { reject(result.errors) }
                 result.data.allContentfulJohtaja.edges.forEach((edge) => {
                     createPage({
