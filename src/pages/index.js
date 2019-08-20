@@ -43,7 +43,7 @@ const IndexPage = ({ data }) => {
           <Article content={about} />
           <Article style="light-article" content={action} />
         </div>
-        {window.innerWidth < 750 ?
+        {/* {window.innerWidth < 750 ? */}
           <iframe
             src="https://snapwidget.com/embed/725690"
             class="snapwidget-widget"
@@ -51,14 +51,14 @@ const IndexPage = ({ data }) => {
             frameborder="0"
             scrolling="no"
           ></iframe>
-          :
-          <iframe
-            src="https://snapwidget.com/embed/725684"
-            className="snapwidget-widget"
-            allowtransparency="true"
-            frameborder="0"
-            scrolling="no"></iframe>
-        }
+          {/* // : */}
+        {/* //   <iframe */}
+        {/* //     src="https://snapwidget.com/embed/725684"
+        //     className="snapwidget-widget"
+        //     allowtransparency="true"
+        //     frameborder="0"
+        //     scrolling="no"></iframe>
+        // } */}
       </div>
 
       {/* < ReactMarkdown className="content" source={frontPageContent} /> */}
