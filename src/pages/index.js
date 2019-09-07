@@ -46,9 +46,9 @@ const IndexPage = ({ data }) => {
         {/* {window.innerWidth < 750 ? */}
           <iframe
             src="https://snapwidget.com/embed/725690"
-            class="snapwidget-widget"
+            className="snapwidget-widget"
             allowtransparency="true"
-            frameborder="0"
+            frameBorder="0"
             scrolling="no"
           ></iframe>
           {/* // : */}

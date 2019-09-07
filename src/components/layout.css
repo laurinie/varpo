@@ -20,7 +20,8 @@ html {
 body {
   margin: 0px;
   font-family: "Raleway-Medium";
-  background-color: #383838;
+  /* background-color: #383838; */
+   background-color: #111;
   color: #fff
 }
 
@@ -81,7 +82,7 @@ header {
 }
 
 .nav_bar img {
-  height: 4em;
+  height: 3em;
 }
 
 .nav_bar h2 a {
@@ -111,12 +112,14 @@ a {
   border-right: 30em solid #6d1616;
   border-bottom: 40vh solid transparent;
 }
+
 .slice {
   position: absolute;
   right: 0;
   top: 50vh;
 }
-.slice-content{
+
+.slice-content {
   position: absolute;
   top: 15vh;
   right: 0;
@@ -124,15 +127,18 @@ a {
   text-align: right;
   padding: 10px;
 }
-.home-content{
+
+.home-content {
   display: grid;
   /* padding: 20px; */
   grid-template-columns: 1fr 1fr;
 }
-.about{
-  height:50Vh;
+
+.about {
+  height: 50Vh;
   padding: 30px;
 }
+
 .post-shape h1 {
   position: relative;
   left: 400px;
@@ -145,24 +151,88 @@ a {
   color: white;
   overflow: hidden;
 }
-.light-article{
+
+.light-article {
   background-color: lightgray;
-  color:#383838;
+  color: #383838;
 }
+
 .sidenav a {
   color: white;
   padding: 10px;
 }
-.snapwidget-widget{
-  border:none; 
-  overflow:hidden;  
-  width:100%; 
-  height:300px
+
+.snapwidget-widget {
+  border: none;
+  overflow: hidden;
+  width: 100%;
+  height: 300px
 }
+
 .footer {
   height: 200px;
   width: 100%;
   background-color: #fff
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  /* -webkit-animation: bgcolor 30s infinite;
+  animation: bgcolor 30s infinite;
+  -webkit-animation-direction: alternate;
+  animation-direction: ; */
+}
+
+/* @keyframes bgcolor {
+  0% {
+      background-color: #9e9e9e61
+  }
+
+  30% {
+      background-color: #040a19
+  }
+
+  60% {
+      background-color: #6d1616
+  }
+
+  90% {
+      background-color: #040a19
+  }
+
+  100% {
+      background-color: #9e9e9e61
+  }
+} */
+
+.johtajaCard {
+  width: 15em;
+  color: #fff;
+  padding: 1em;
+  background-color: #040a19;
+  margin: 1em;
+  position: relative;
+}
+.johtajaCard :before {
+  content: '';
+  position: absolute;
+  bottom: 0; right: 0;
+  border-top: 80px solid transparent;
+  border-right: 80px solid #6d1616;
+  width: 0;
+}
+.johtajaCard img {
+  width: 100%;
+  background-color: white;
+  /* border-radius: 10px; */
+  height: 15em;
+  object-fit: cover;
+  object-position: top;
+}
+
+.background {
+  z-index: -1;
 }
 
 @media (max-width: 750px) {
@@ -179,7 +249,7 @@ a {
     border-right: 75vw solid #6d1616;
     border-bottom: 40vh solid transparent;
   }
-  .slice-content{
+  .slice-content {
     position: absolute;
     top: 15vh;
     right: 0;
@@ -187,11 +257,44 @@ a {
     text-align: right;
     padding: 10px;
   }
-  .about{
-    height:50vh;
+  .about {
+    height: 50vh;
     padding: 30px;
   }
-  .home-content{
+  .home-content {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 750px) {
+  h1 {
+    font-size: 2.5em !important;
+  }
+  .nav_bar h1 a {
+    font-size: 0.75em !important;
+  }
+  .triangle-left {
+    width: 0;
+    height: 0;
+    border-top: 25vh solid transparent;
+    border-right: 75vw solid #6d1616;
+    border-bottom: 40vh solid transparent;
+  }
+  .slice-content {
+    position: absolute;
+    top: 15vh;
+    right: 0;
+    width: 50vw;
+    text-align: right;
+    padding: 10px;
+  }
+  .about {
+    min-height: 50vh;
+    height: 100%;
+    padding: 30px;
+  }
+  .home-content {
     display: grid;
     grid-template-columns: 1fr;
   }
