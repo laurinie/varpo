@@ -208,20 +208,21 @@ a {
 
 .johtajaCard {
   width: 15em;
+  height: 30em;
   color: #fff;
-  padding: 1em;
+  /* padding: 1em; */
   background-color: #040a19;
   margin: 1em;
-  position: relative;
+  /* position: relative; */
 }
-.johtajaCard :before {
+/* .johtajaCard :before {
   content: '';
   position: absolute;
   bottom: 0; right: 0;
   border-top: 80px solid transparent;
   border-right: 80px solid #6d1616;
   width: 0;
-}
+} */
 .johtajaCard img {
   width: 100%;
   background-color: white;
@@ -230,12 +231,23 @@ a {
   object-fit: cover;
   object-position: top;
 }
+.imageShadow{
+  background: linear-gradient(rgba(0, 0, 0, 0.1) 40%, rgba(0, 0, 0, 0.3) 60%, rgba(0, 0, 0, 0.8));
+  height: 100%;
+  position: relative;
+  bottom: 0;
+  display: flex;
+  flex-direction: column-reverse;
+  padding-left: 10px;
+  border-radius: 10px;
+}
+
 
 .background {
   z-index: -1;
 }
 
-@media (max-width: 750px) {
+/* @media (max-width: 750px) {
   h1 {
     font-size: 2.5em !important;
   }
@@ -265,9 +277,10 @@ a {
     display: grid;
     grid-template-columns: 1fr;
   }
-}
+  
+} */
 
-@media (max-width: 750px) {
+ @media (max-width: 600px) {
   h1 {
     font-size: 2.5em !important;
   }
@@ -278,12 +291,12 @@ a {
     width: 0;
     height: 0;
     border-top: 25vh solid transparent;
-    border-right: 75vw solid #6d1616;
-    border-bottom: 40vh solid transparent;
+    border-right: 100vw solid #6d1616;
+    border-bottom: 15em solid transparent;
   }
   .slice-content {
     position: absolute;
-    top: 15vh;
+    top: 2.5em;
     right: 0;
     width: 50vw;
     text-align: right;
@@ -293,9 +306,23 @@ a {
     min-height: 50vh;
     height: 100%;
     padding: 30px;
+    margin-top: 40px;
   }
   .home-content {
     display: grid;
     grid-template-columns: 1fr;
   }
-}
+  .johtajaCard {
+    width: 7,5em;
+    height: 15em;
+    color: #fff;
+    /* padding: 1em; */
+    background-color: #040a19;
+    margin: 1em;
+    /* position: relative; */
+  }
+  .reducedpadding{
+    padding: 1px;
+    margin: 6px;
+  }
+} 

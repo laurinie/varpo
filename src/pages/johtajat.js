@@ -8,10 +8,18 @@ import SEO from "../components/seo";
 const Johtaja = ({ node }) => {
   return (
 
-    <Link to={"johtajat/" + node.name} className="johtajaCard">
-      <img src={node.picture.file.url} />
-      <h3>{node.name}</h3>
-      <p>{node.shortDescription}</p>
+    <Link to={"johtajat/" + node.name} className="johtajaCard" style={{
+      backgroundImage: `url(${node.picture.file.url})`,
+      backgroundRepeat: "no-repeat",
+      backgroundSize: "cover",
+      borderRadius: 10,
+
+    }}>
+      {/* <img src={node.picture.file.url} /> */}
+      <div className="imageShadow">
+        <p className="reducedpadding">{node.shortDescription}</p>
+        <h3 className="reducedpadding">{node.name}</h3>
+      </div>
     </Link>
 
   )
@@ -19,10 +27,10 @@ const Johtaja = ({ node }) => {
 const Johtajat = ({ data }) => (
   <Layout>
     <SEO title="johtajat" />
-    <div className="background">
+    {/* <div className="background"> */}
 
-      {/* <img src={data.allContentfulAsset.nodes[0].file.url} /> */}
-    </div>
+    {/* <img src={data.allContentfulAsset.nodes[0].file.url} /> */}
+    {/* </div> */}
     <div className="cards">{data.allContentfulJohtaja.nodes.map((node) => <Johtaja node={node} />)}</div>
   </Layout>
 )
