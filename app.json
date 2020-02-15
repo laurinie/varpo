@@ -1,0 +1,15 @@
+{
+  "name": "Hubaisa.fi",
+  "description": "Site of a young developer",
+  "keywords": [
+    "contentful",
+    "gatsby",
+    "static",
+    "ssg",
+    "lauri",
+    "hubaisa",
+    "fullstack"
+  ],
+  "repository": "https://github.com/laurinie/hubaisa.fi",
+  "success_url": "/"
+}
