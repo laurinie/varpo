@@ -1,35 +1,42 @@
 import React from 'react'
 import Helmet from 'react-helmet'
 import get from 'lodash/get'
-import Img from 'gatsby-image'
+import { graphql } from "gatsby"
+import NonStretchedImage from "../components/NonStretchedImage";
 
 import heroStyles from '../components/hero.module.css'
 
 class PageTemplate extends React.Component {
+  renderBlock(block) {
+    if (block.title !== "empty") {
+      return (
+        <div>
+          <h1>{block.title}</h1>
+          <div
+            className={heroStyles.block}
+            dangerouslySetInnerHTML={{
+              __html: block.content.childMarkdownRemark.html,
+            }}
+          />
+        </div>
+      )
+    }
+  }
   render() {
     const post = get(this.props, 'data.contentfulPage')
-    const siteTitle = get(this.props, 'data.site.siteMetadata.title')
-
+    // const siteTitle = get(this.props, 'data.site.siteMetadata.title')
+    const blocks = [post.block1, post.block2, post.block3, post.block4];
     return (
       <div>
-        <Helmet title={`${post.title} | ${siteTitle}`} />
+        <Helmet title={`Vartiovuoren Pojat`} />
         <div className={heroStyles.hero}>
-          <Img className={heroStyles.coverImage} alt={post.title} sizes={post.coverImage.fixed.src} />
+          <NonStretchedImage className={heroStyles.heroImage} fluid={post.coverImage.fluid} />
         </div>
         <div className="wrapper">
           <h1 className="section-headline">{post.title}</h1>
-          <p
-            style={{
-              display: 'block',
-            }}
-          >
-            {/* {post.publishDate} */}
-          </p>
-          <div
-            dangerouslySetInnerHTML={{
-              __html: post.content1.content.childMarkdownRemark.html,
-            }}
-          />
+          {blocks.map(block => (
+            this.renderBlock(block)
+          ))}
         </div>
       </div>
     )
@@ -39,11 +46,35 @@ class PageTemplate extends React.Component {
 export default PageTemplate
 
 export const pageQuery = graphql`
-  query PageBySlug($slug: String!) {
-    contentfulPage(slug: {eq: $slug}) {
+query PageBySlug($slug: String!) {
+  contentfulPage(slug: {eq: $slug}) {
         slug
         title
-        content1 {
+        block1 {
+          title
+          content {
+            childMarkdownRemark {
+              html
+            }
+          }
+        }
+        block2 {
+          title
+          content {
+            childMarkdownRemark {
+              html
+            }
+          }
+        }
+        block3 {
+          title
+          content {
+            childMarkdownRemark {
+              html
+            }
+          }
+        }
+        block4 {
           title
           content {
             childMarkdownRemark {
@@ -52,8 +83,8 @@ export const pageQuery = graphql`
           }
         }
         coverImage {
-          fixed {
-            src
+          fluid(quality: 100) {
+src
           }
         }
       }

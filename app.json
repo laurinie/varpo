@@ -1,15 +1,13 @@
 {
-  "name": "Hubaisa.fi",
-  "description": "Site of a young developer",
+  "name": "Varpo.fi",
+  "description": "Vartiovuoren Pojat ry sivut",
   "keywords": [
-    "contentful",
-    "gatsby",
-    "static",
-    "ssg",
-    "lauri",
-    "hubaisa",
-    "fullstack"
+    "varpo",
+    "scouts",
+    "partio",
+    "itä-helsinki",
+    "eräpoika"
   ],
-  "repository": "https://github.com/laurinie/hubaisa.fi",
+  "repository": "https://github.com/laurinie/varpo",
   "success_url": "/"
 }

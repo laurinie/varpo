@@ -1,4 +1,5 @@
 let contentfulConfig
+const path = require(`path`)
 
 try {
   // Load the Contentful config from the .contentful.json
@@ -28,6 +29,14 @@ module.exports = {
     {
       resolve: 'gatsby-source-contentful',
       options: contentfulConfig,
-    }
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: path.join(__dirname, `src`, `images`),
+      },
+    },
+    `gatsby-transformer-sharp`,
   ],
 }
