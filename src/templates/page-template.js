@@ -14,7 +14,7 @@ class PageTemplate extends React.Component {
       <div>
         <Helmet title={`${post.title} | ${siteTitle}`} />
         <div className={heroStyles.hero}>
-          <Img className={heroStyles.coverImage} alt={post.title} sizes={post.coverImage.sizes} />
+          <Img className={heroStyles.coverImage} alt={post.title} sizes={post.coverImage.fixed.src} />
         </div>
         <div className="wrapper">
           <h1 className="section-headline">{post.title}</h1>
@@ -27,7 +27,7 @@ class PageTemplate extends React.Component {
           </p>
           <div
             dangerouslySetInnerHTML={{
-              __html: post.text1.childMarkdownRemark.html,
+              __html: post.content1.content.childMarkdownRemark.html,
             }}
           />
         </div>
@@ -40,18 +40,22 @@ export default PageTemplate
 
 export const pageQuery = graphql`
   query PageBySlug($slug: String!) {
-    contentfulPage(slug: { eq: $slug }) {
-      title
-      coverImage {
-        sizes(maxWidth: 1180, background: "rgb:000000") {
-          ...GatsbyContentfulSizes_withWebp
+    contentfulPage(slug: {eq: $slug}) {
+        slug
+        title
+        content1 {
+          title
+          content {
+            childMarkdownRemark {
+              html
+            }
+          }
+        }
+        coverImage {
+          fixed {
+            src
+          }
         }
       }
-      text1 {
-        childMarkdownRemark {
-          html
-        }
-      }
-    }
   }
 `
