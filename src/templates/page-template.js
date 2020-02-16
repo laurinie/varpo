@@ -5,7 +5,7 @@ import Img from 'gatsby-image'
 
 import heroStyles from '../components/hero.module.css'
 
-class RootIndex extends React.Component {
+class PageTemplate extends React.Component {
   render() {
     const post = get(this.props, 'data.contentfulPage')
     const siteTitle = get(this.props, 'data.site.siteMetadata.title')
@@ -36,11 +36,11 @@ class RootIndex extends React.Component {
   }
 }
 
-export default RootIndex
+export default PageTemplate
 
 export const pageQuery = graphql`
-  query FrontPage{
-    contentfulPage(slug: {eq: "varpo"}) {
+  query PageBySlug($slug: String!) {
+    contentfulPage(slug: {eq: $slug}) {
         slug
         title
         content1 {
