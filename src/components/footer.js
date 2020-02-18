@@ -1,54 +1,63 @@
 import React from 'react'
-import get from 'lodash/get'
-import { graphql } from "gatsby"
+import { useStaticQuery, graphql } from "gatsby"
 
-import footerStyles from '../components/footer.css'
+import '../components/footer.css'
 
-class Footer extends React.Component {
-    render() {
-        const post = get(this.props, 'data.contentfulFooter')
-        // const siteTitle = get(this.props, 'data.site.siteMetadata.title')
+const Footer = () =>{
+        const data = useStaticQuery(graphql`
+        query FooterQuery {
+            contentfulFooter {
+              third {
+                childMarkdownRemark {
+                  html
+                }
+              }
+              first {
+                childMarkdownRemark {
+                  html
+                }
+              }
+              second {
+                childMarkdownRemark {
+                  html
+                }
+              }
+              text {
+                childMarkdownRemark {
+                  html
+                }
+              }
+            }
+          }
+          
+        `)
+        console.log(data);
         return (
-            <div className={footerStyles.footer}>
+            <footer>
                 <div className="wrapper">
                     <div
-                        // className={heroStyles.block}
                         dangerouslySetInnerHTML={{
-                            __html: post.text.content.childMarkdownRemark.html,
+                            __html: data.contentfulFooter.text.childMarkdownRemark.html,
+                        }}
+                    />
+                    <div
+                        dangerouslySetInnerHTML={{
+                            __html: data.contentfulFooter.first.childMarkdownRemark.html,
+                        }}
+                    />
+                    <div
+                        dangerouslySetInnerHTML={{
+                            __html: data.contentfulFooter.second.childMarkdownRemark.html,
+                        }}
+                    />
+                    <div
+                        dangerouslySetInnerHTML={{
+                            __html: data.contentfulFooter.third.childMarkdownRemark.html,
                         }}
                     />
                 </div>
-            </div>
+            </footer>
         )
     }
-}
 
 export default Footer
-
-export const pageQuery = graphql`
-query FooterQuery {
-    contentfulFooter {
-      third {
-        childMarkdownRemark {
-          html
-        }
-      }
-      first {
-        childMarkdownRemark {
-          html
-        }
-      }
-      second {
-        childMarkdownRemark {
-          html
-        }
-      }
-      text {
-        childMarkdownRemark {
-          html
-        }
-      }
-    }
-  }
-  
-`
