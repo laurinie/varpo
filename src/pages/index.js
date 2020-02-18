@@ -4,16 +4,16 @@ import get from 'lodash/get'
 import { graphql } from "gatsby"
 import NonStretchedImage from "../components/NonStretchedImage";
 import Layout from "../layouts/index";
-import heroStyles from '../components/hero.module.css'
+import '../components/hero.module.css'
 
-class RootIndex extends React.Component {
-  renderBlock(block) {
+const RootIndex= (props)=>{
+  const renderBlock=(block)=> {
     if (block.title !== "empty") {
       return (
         <div>
           <h1>{block.title}</h1>
           <div
-            className={heroStyles.block}
+            className="block"
             dangerouslySetInnerHTML={{
               __html: block.content.childMarkdownRemark.html,
             }}
@@ -22,33 +22,30 @@ class RootIndex extends React.Component {
       )
     }
   }
-  render() {
-    const post = get(this.props, 'data.contentfulPage')
+    const post = get(props, 'data.contentfulPage')
     // const siteTitle = get(this.props, 'data.site.siteMetadata.title')
     return (
       <Layout>
-        <div>
           <Helmet title={`Vartiovuoren Pojat`} />
-          <div className={heroStyles.hero}>
-            <NonStretchedImage className={heroStyles.heroImage} fluid={post.coverImage.fluid} />
+          <div className="hero">
+            <NonStretchedImage className="heroImage" fluid={post.coverImage.fluid} />
           </div>
           <div className="wrapper">
             <h1 className="section-headline">{post.title}</h1>
             {post.blocks.map(block => (
-              this.renderBlock(block)
+              renderBlock(block)
             ))}
           </div>
-        </div>
       </Layout>
     )
   }
-}
+
 
 export default RootIndex
 
 export const pageQuery = graphql`
   query FrontPage{
-    contentfulPage(slug: {eq: "varpo"}) {
+    contentfulPage(slug: {eq: "etusivu"}) {
       slug
       title
       coverImage {
