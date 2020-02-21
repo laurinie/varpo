@@ -14,6 +14,7 @@ class PageTemplate extends React.Component {
       return (
         <div className={pageStyles.block}>
           <h1>{block.title}</h1>
+          {block.button&&<a href={block.button.link} style={{backgroundColor:block.button.color||"#fc030b"}} >{block.button.name}</a>}
           <div
             className={heroStyles.block}
             dangerouslySetInnerHTML={{
@@ -65,6 +66,11 @@ query PageBySlug($slug: String!) {
         childMarkdownRemark {
           html
         }
+      }
+      button{
+        name
+        link
+        color
       }
     }
   }

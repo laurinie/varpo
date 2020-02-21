@@ -70,3 +70,9 @@ a {
   .list-inline li {
     display: inline-block;
   }
+button{
+  font-family: "Avenir", Tahoma, Arial, Helvetica, sans-serif;
+  font-size: 1em;
+  line-height: 1.65;
+  /* color: #fff; */
+}

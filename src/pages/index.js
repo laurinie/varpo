@@ -13,6 +13,7 @@ const RootIndex = (props) => {
       return (
         <div className={pageStyles.block}>
           <h1>{block.title}</h1>
+          {block.button&&<a href={block.button.link} style={{backgroundColor:block.button.color||"#fc030b"}} >{block.button.name}</a>}
           <div
             className="block"
             dangerouslySetInnerHTML={{
@@ -30,7 +31,7 @@ const RootIndex = (props) => {
     <Layout>
       <Helmet title={`Vartiovuoren Pojat`} />
       <div className={heroStyles.hero}>
-      <h2 className={pageStyles.highlighted}>{post.highlighted}</h2>
+        <h2 className={pageStyles.highlighted}>{post.highlighted}</h2>
         <NonStretchedImage className={heroStyles.heroImage} fluid={post.coverImage.fluid} />
       </div>
       <div className="wrapper">
@@ -63,6 +64,11 @@ export const pageQuery = graphql`
           childMarkdownRemark {
             html
           }
+        }
+        button{
+          name
+          link
+          color
         }
       }
     }
