@@ -1,6 +1,6 @@
 let contentfulConfig
 const path = require(`path`)
-
+const website = require('./config/website')
 try {
   // Load the Contentful config from the .contentful.json
   contentfulConfig = require('./.contentful')
@@ -21,7 +21,21 @@ if (!spaceId || !accessToken) {
 }
 
 module.exports = {
-  pathPrefix: '/gatsby-contentful-starter',
+  pathPrefix: '/',
+  siteMetadata: {
+    siteUrl: website.url, // For gatsby-plugin-sitemap
+    pathPrefix:website.pathPrefix,
+    title: website.title,
+    titleAlt: website.titleAlt,
+    description: website.description,
+    banner: website.logo,
+    headline: website.headline,
+    siteLanguage: website.siteLanguage,
+    ogLanguage: website.ogLanguage,
+    author: website.author,
+    twitter: website.twitter,
+    facebook: website.facebook,
+  },
   plugins: [
     'gatsby-transformer-remark',
     'gatsby-plugin-react-helmet',
@@ -38,31 +52,27 @@ module.exports = {
       },
     },
     `gatsby-transformer-sharp`,
-  ],
-  siteMetadata: {
-    siteUrl:"https:varpo.fi",
-    pathPrefix: '/', // Prefix for all links. If you deploy your site to example.com/portfolio your pathPrefix should be "portfolio"
-    title: 'Vartiovuoren Pojat', // Navigation and Site Title
-    titleAlt: 'varpo.fi', // Title for JSONLD
-    description: "Vartiovuoren Pojat. Pariolippukunta Itä-Helsingistä. Erätoiminnan riemua jo vuodesta 1959. Perinteikäs, mutta notkea ja kehittyvä lippukunta. Pääkaupunkiseudun suurin poikkalippukunta. ",
-    headline: 'Itä-Helsinkiläinen partiolippukunta', // Headline for schema.org JSONLD
-    url: 'https://varpo.fi', // Domain of your site. No trailing slash!
-    siteLanguage: 'fi', // Language Tag on <html> element
-    logo: '/varpo-tunnus.png', // Used for SEO
-    ogLanguage: 'fi_FI', // Facebook Language
-    banner: '/varpo-tunnus.png',
-
-    // JSONLD / Manifest
-    favicon: 'static/varpo-tunnus.png', // Used for manifest favicon generation
-    shortName: 'Varpo', // shortname for manifest. MUST be shorter than 12 characters
-    author: 'Varpo', // Author for schemaORGJSONLD
-    themeColor: '#fc0303',
-    backgroundColor: '#fff',
-
-    // twitter: '@starter_prismicio', // Twitter Username
-    facebook: 'vartiovuoren.pojat', // Facebook Site Name
-    googleAnalyticsID: 'UA-158731799-1',
-
-    // skipNavId: 'reach-skip-nav', // ID for the "Skip to content" a11y feature
-  }
+    {
+      resolve: 'gatsby-plugin-google-analytics',
+      options: {
+        trackingId: website.googleAnalyticsID,
+      },
+    },
+    'gatsby-plugin-sitemap',
+    {
+      resolve: 'gatsby-plugin-manifest',
+      options: {
+        name: website.title,
+        short_name: website.titleAlt,
+        description: website.description,
+        start_url: website.pathPrefix,
+        background_color: website.backgroundColor,
+        theme_color: website.themeColor,
+        display: 'standalone',
+        icon: website.favicon,
+      },
+    },
+    // Must be placed at the end
+    // 'gatsby-plugin-offline',
+  ]
 }
