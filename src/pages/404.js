@@ -6,26 +6,18 @@ import NonStretchedImage from "../components/NonStretchedImage";
 import Layout from "../layouts/index";
 import pageStyles from "./page.module.css";
 import Link from 'gatsby-link'
-import SEO from "../components/SEO";
-import Highlighted from "../components/higlighted"
+import Highlighted from "../components/higlighted";
 
-const RootIndex = (props) => {
-  const renderBlock = (block,from) => {
-    console.log(block);
+const notFound = (props) => {
+  const renderBlock = (block) => {
     if (block.title !== "empty") {
       return (
-        <div className={pageStyles.indexblock} key={block.slug}>
-          <Link to={`/${block.slug}`} state={{from:from}}>
+        <div className={pageStyles.indexblock}>
+          <Link to={`/${block.slug}`} state={{from:post.slug}}>
             <div className={pageStyles.link}>
               <h1>{block.title}</h1>
               <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z" /><path d="M0 0h24v24H0V0z" fill="none" /></svg>
             </div>
-            <div
-            className={pageStyles.block}
-            dangerouslySetInnerHTML={{
-              __html: block.description.childMarkdownRemark.html,
-            }}
-          />
           </Link>
         </div>
       )
@@ -34,20 +26,14 @@ const RootIndex = (props) => {
   const post = get(props, 'data.contentfulPage')
   return (
     <Layout>
-      <SEO
-        title={post.title}
-        description={post.description}
-        pathname={post.slug}
-        article={false}
-      />
       <div className={pageStyles.cover}>
-        <NonStretchedImage className={pageStyles.coverImage} objectFit={"cover"} fluid={post.coverImage.fluid} />
+        <NonStretchedImage className={pageStyles.coverImage} objectFit={"contain"} fluid={post.coverImage.fluid} />
         <Highlighted highlighted={post.highlighted}/>
-        </div>
+      </div>
       <div className="wrapper">
         <h1 className="section-headline">{post.title}</h1>
         {post.blocks.map(block => (
-          renderBlock(block,post.slug)
+          renderBlock(block)
         ))}
       </div>
     </Layout>
@@ -55,11 +41,11 @@ const RootIndex = (props) => {
 }
 
 
-export default RootIndex
+export default notFound
 
 export const pageQuery = graphql`
-  query FrontPage{
-    contentfulPage(slug: {eq: "/"}) {
+query ErrorPage {
+    contentfulPage(slug: {eq: "404"}) {
       slug
       title
       coverImage {
@@ -70,13 +56,8 @@ export const pageQuery = graphql`
       highlighted
       blocks {
         ... on ContentfulPage {
-        title
-        description{
-          childMarkdownRemark {
-          html
-        }
-      }
-        slug
+          slug
+          title
         }
       }
     }

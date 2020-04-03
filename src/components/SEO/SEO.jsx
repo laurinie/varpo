@@ -7,7 +7,7 @@ import Twitter from './Twitter'
 
 // Complete tutorial: https://www.gatsbyjs.org/docs/add-seo-component/
 
-const SEO = ({ title, desc, banner, pathname, article, node }) => {
+const SEO = ({ title, description, banner, pathname, article, node }) => {
   const { site } = useStaticQuery(query)
 
   const {
@@ -27,9 +27,9 @@ const SEO = ({ title, desc, banner, pathname, article, node }) => {
 
   const seo = {
     title: title || defaultTitle,
-    description: desc || defaultDescription,
-    image: `${siteUrl}${banner || defaultBanner}`,
-    url: `${siteUrl}${pathname || ''}`,
+    description: description || defaultDescription,
+    image: `${banner&&banner.substring(2) || siteUrl+"/vmv.jpeg"}`,
+    url: `${siteUrl}/${pathname || ''}`,
   }
 
   // schema.org in JSONLD format
@@ -110,8 +110,8 @@ const SEO = ({ title, desc, banner, pathname, article, node }) => {
           url: `${siteUrl}${defaultBanner}`,
         },
       },
-      datePublished: node.first_publication_date,
-      dateModified: node.last_publication_date,
+      // datePublished: node.first_publication_date,
+      // dateModified: node.last_publication_date,
       description: seo.description,
       headline: seo.title,
       inLanguage: siteLanguage,

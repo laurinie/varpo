@@ -1,20 +1,42 @@
-.hero {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 61.8vh;
-  max-height: 400px;
-  background: #e1e1e1;
-  font-size: 2em;
+.highlighted {
+  background-color: #e33030;
+  color: white;
+  padding: 20px;
+  margin: 0px;
+  margin-top: -8px;
+}
+
+.indexblock {
+  padding: 10px;
   overflow: hidden;
 }
 
-.highlighted {
-  background-color: red;
-  color: white;
-  height: 100px;
-  padding: 20px;
+.indexblock:hover {
+  background-color: #1a001d0d;
 }
-.block{
+
+.block {
   overflow: hidden;
+}
+
+.link {
+  display: flex;
+}
+.link svg{
+  margin-bottom: auto;
+  margin-top: auto;
+}
+
+.cover {
+  position: relative;
+  /* background: rgb(138, 18, 18); */
+  color: #b7b7b7;
+  text-align: center;
+}
+
+.coverImage {
+  height: 61.8vh;
+  max-height: 400px;
+  /* background-color: red; */
+  min-height: 300px;
 }

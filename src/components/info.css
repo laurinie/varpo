@@ -1,0 +1,16 @@
+.flag{
+    position: fixed;
+    bottom: 3rem;
+    right: 0;
+    text-align: end;
+    margin: 0;
+    height: 0;
+}
+.flag-link{
+    padding: 10px;
+    background-color: #009688;
+}
+.flag-link span{
+    text-decoration: underline;
+    cursor: pointer;
+}

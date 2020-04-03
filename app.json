@@ -1,12 +1,13 @@
 {
-  "name": "Varpo.fi",
-  "description": "Vartiovuoren Pojat ry sivut",
+  "name": "beta.varpo.fi",
+  "description": "Vartiovuoren Poikain sivut",
   "keywords": [
-    "varpo",
-    "scouts",
+    "Varpo",
+    "erälippukunta",
     "partio",
     "itä-helsinki",
-    "eräpoika"
+    "ulkoilu",
+    "päpa"
   ],
   "repository": "https://github.com/laurinie/varpo",
   "success_url": "/"

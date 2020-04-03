@@ -4,19 +4,18 @@ import get from 'lodash/get'
 import { graphql } from "gatsby"
 import NonStretchedImage from "../components/NonStretchedImage";
 import Layout from "../layouts/index";
-
-import heroStyles from '../components/hero.module.css'
+import Link from 'gatsby-link'
 import pageStyles from "../pages/page.module.css";
+import SEO from "../components/SEO";
 
 class PageTemplate extends React.Component {
   renderBlock(block) {
     if (block.title !== "empty") {
       return (
-        <div className={pageStyles.block}>
+        <div className={pageStyles.block} key={block.title}>
           <h1>{block.title}</h1>
-          {block.button&&<a href={block.button.link} style={{backgroundColor:block.button.color||"#fc030b"}} >{block.button.name}</a>}
           <div
-            className={heroStyles.block}
+            className={pageStyles.block}
             dangerouslySetInnerHTML={{
               __html: block.content.childMarkdownRemark.html,
             }}
@@ -29,14 +28,21 @@ class PageTemplate extends React.Component {
     const post = get(this.props, 'data.contentfulPage')
     return (
       <Layout>
+        <SEO
+        title={post.title}
+        description={post.description}
+        pathname={post.slug}
+        article={true}
+        // banner={post.coverImage && post.coverImage.fluid && post.coverImage.fluid.src}
+      />
         <div>
-          <Helmet title={`${post.title} | Vartiovuoren Pojat`} />
-          <div className={heroStyles.hero}>
-          {post.highlighted!==null?<h2 className={pageStyles.highlighted}>{post.highlighted}</h2>:""}
-            <NonStretchedImage className={heroStyles.heroImage} fluid={post.coverImage.fluid} />
+          {/* <Helmet title={post.title} /> */}
+          <div className={pageStyles.cover}>
+            {post.highlighted && <h2 className={pageStyles.highlighted}>{post.highlighted}</h2>}
+            {post.coverImage&&<NonStretchedImage className={pageStyles.coverImage} objectFit={"cover"} fluid={post.coverImage.fluid} />}
           </div>
           <div className="wrapper">
-            <h1 className="section-headline">{post.title}</h1>
+            <Link to={"/"}><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z" /><path d="M0 0h24v24H0V0z" fill="none" /></svg>Etusivulle</Link>
             {post.blocks.map(block => (
               this.renderBlock(block)
             ))}
@@ -60,17 +66,18 @@ query PageBySlug($slug: String!) {
       }
     }
     highlighted
+    description{
+      childMarkdownRemark {
+      html
+    }}
     blocks {
+      ... on ContentfulBlock {
       title
       content {
         childMarkdownRemark {
           html
         }
       }
-      button{
-        name
-        link
-        color
       }
     }
   }

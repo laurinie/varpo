@@ -14,5 +14,5 @@ export default(props)=>{
       }
     }
   
-    return <Img {...normalizedProps} />
+    return <Img imgStyle={{objectFit: props.objectFit}} {...normalizedProps} />
   }
