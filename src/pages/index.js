@@ -1,5 +1,4 @@
 import React from 'react'
-import Helmet from 'react-helmet'
 import get from 'lodash/get'
 import { graphql } from "gatsby"
 import NonStretchedImage from "../components/NonStretchedImage";
@@ -11,7 +10,6 @@ import Highlighted from "../components/higlighted"
 
 const RootIndex = (props) => {
   const renderBlock = (block,from) => {
-    console.log(block);
     if (block.title !== "empty") {
       return (
         <div className={pageStyles.indexblock} key={block.slug}>
@@ -41,7 +39,7 @@ const RootIndex = (props) => {
         article={false}
       />
       <div className={pageStyles.cover}>
-        <NonStretchedImage className={pageStyles.coverImage} objectFit={"cover"} fluid={post.coverImage.fluid} />
+        <NonStretchedImage className={pageStyles.coverImage} objectFit={"contain"} fluid={post.coverImage.fluid} />
         <Highlighted highlighted={post.highlighted}/>
         </div>
       <div className="wrapper">

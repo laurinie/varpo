@@ -30,7 +30,7 @@ class PageTemplate extends React.Component {
       <Layout>
         <SEO
         title={post.title}
-        description={post.description}
+        description={post.description.childMarkdownRemark.html}
         pathname={post.slug}
         article={true}
         // banner={post.coverImage && post.coverImage.fluid && post.coverImage.fluid.src}
