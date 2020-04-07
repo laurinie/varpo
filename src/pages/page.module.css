@@ -10,6 +10,9 @@
   padding: 10px;
   overflow: hidden;
 }
+.indexblock a {
+  text-decoration: none;
+}
 
 .indexblock:hover {
   background-color: #1a001d0d;
@@ -39,4 +42,7 @@
   max-height: 400px;
   /* background-color: red; */
   min-height: 300px;
+}
+.back{
+  text-decoration: none;
 }
