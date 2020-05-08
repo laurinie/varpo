@@ -46,3 +46,15 @@
 .back{
   text-decoration: none;
 }
+.blocks{
+  display: flex;
+  flex-wrap: wrap;
+}
+@media (max-width: 700px){
+  .indexblock{
+    min-width: 40% !important;
+  }
+  .indexblock h1{
+    font-size: 25px;
+  }
+}
