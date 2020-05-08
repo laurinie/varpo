@@ -29,11 +29,14 @@ exports.createPages = ({ graphql, boundActionCreators}) => {
         const posts = result.data.allContentfulPage.edges
         posts.forEach((post) => {
           if(post.node.slug !== "/" && post.node.slug !== "404"){
+            let from = post.node.slug.split("/");
+            from.pop();
             createPage({
               path: `/${post.node.slug}/`,
               component: page,
               context: {
-                slug: post.node.slug
+                slug: post.node.slug,
+                from: "/"+from.join("/")
               },
             })
           }

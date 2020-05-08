@@ -45,7 +45,7 @@ class PageTemplate extends React.Component {
   }
   render() {
     const post = get(this.props, 'data.contentfulPage')
-    
+    console.log(this.props)
     return (
       <Layout>
         <SEO
@@ -62,7 +62,7 @@ class PageTemplate extends React.Component {
             {post.coverImage && <NonStretchedImage className={pageStyles.coverImage} objectFit={"cover"} fluid={post.coverImage.fluid} />}
           </div>
           <div className="wrapper">
-            <Link to={this.props.location.state.from} className={pageStyles.back}><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z" /><path d="M0 0h24v24H0V0z" fill="none" /></svg>Takaisin</Link>
+            <Link to={this.props.pathContext.from} className={pageStyles.back}><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z" /><path d="M0 0h24v24H0V0z" fill="none" /></svg>Takaisin</Link>
             <div className={pageStyles.blocks}>
               {post.blocks.map(block => (
                 this.renderBlock(block, post.gridSize, post.slug)
