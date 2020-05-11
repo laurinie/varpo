@@ -16,6 +16,10 @@ Luo ``` .contentful.json ``` tiedosto joka sisältää ```spaceId ``` ja ``` acc
 
 ``` gatsby develop ```
 
+localhost:8000
+
+localhost:8000/__graphql on hyödyllinen työkalu contentful kyselyiden muodostamiseen
+
 # Tuotantoon
 
 Netlify lataa contentful sisällön ja renderöi valmiit sivut. Netlify kuuntelee master branchiin muutoksia sekä contentfulin sisältö muutoksia.
