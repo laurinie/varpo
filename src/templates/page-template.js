@@ -9,11 +9,11 @@ import pageStyles from "../pages/page.module.css";
 import SEO from "../components/SEO";
 
 class PageTemplate extends React.Component {
-  renderBlock(block, grid, from) {
+  renderBlock(block,from) {
     if (block.title !== "empty") {
       if (block.slug) {
         return (
-          <div className={pageStyles.indexblock} key={block.slug} style={{width:`${(100/grid||1)-5}%`}}>
+          <div className={pageStyles.indexblock} key={block.slug} style={block.widthInGrids&&{gridColumn:1+"/"+parseInt(block.widthInGrids+1)}}>
             <Link to={`/${block.slug}`} state={{ from: from }}>
               <div className={pageStyles.link}>
                 <h1>{block.title}</h1>
@@ -30,7 +30,7 @@ class PageTemplate extends React.Component {
         )
       } else {
         return (
-          <div className={pageStyles.block} key={block.title} style={{ width: `${100 / grid || 1}%` }}>
+          <div className={pageStyles.block} key={block.title} style={block.widthInGrids&&{gridColumn:1+"/"+parseInt(block.widthInGrids+1)}}>
             <h1>{block.title}</h1>
             <div
               className={pageStyles.block}
@@ -50,10 +50,10 @@ class PageTemplate extends React.Component {
       <Layout>
         <SEO
           title={post.title}
-          description={post.description.childMarkdownRemark.html}
+          description={post.descriptionToLink}
           pathname={post.slug}
           article={true}
-        // banner={post.coverImage && post.coverImage.fluid && post.coverImage.fluid.src}
+          // banner={post.coverImage && post.coverImage.fluid && post.coverImage.fluid.src}
         />
         <div>
           {/* <Helmet title={post.title} /> */}
@@ -63,9 +63,9 @@ class PageTemplate extends React.Component {
           </div>
           <div className="wrapper">
             <Link to={this.props.pathContext.from} className={pageStyles.back}><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z" /><path d="M0 0h24v24H0V0z" fill="none" /></svg>Takaisin</Link>
-            <div className={pageStyles.blocks}>
+            <div className={pageStyles.blocks} style={{ display: "grid", gridTemplateColumns: "repeat(" + post.gridSize + ",1fr)" }}>
               {post.blocks.map(block => (
-                this.renderBlock(block, post.gridSize, post.slug)
+                this.renderBlock(block, post.slug)
               ))}
             </div>
           </div>
@@ -88,11 +88,13 @@ query PageBySlug($slug: String!) {
       }
     }
     highlighted
+    descriptionToLink
     description {
       childMarkdownRemark {
         html
       }
     }
+    widthInGrids
     gridSize
     blocks {
       ... on ContentfulBlock {

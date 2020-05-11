@@ -20,10 +20,12 @@
 
 .block {
   overflow: hidden;
+  padding: 10px;
 }
 
 .link {
   display: flex;
+  color: rgb(92, 0, 0);
 }
 .link svg{
   margin-bottom: auto;
@@ -50,11 +52,17 @@
   display: flex;
   flex-wrap: wrap;
 }
+
 @media (max-width: 700px){
-  .indexblock{
-    min-width: 40% !important;
+  .blocks{
+    grid-template-columns: 1fr !important
   }
-  .indexblock h1{
-    font-size: 25px;
+  .block img{
+    max-height: 200px;
+    width: auto;
+  }
+  .indexblock
+  .block{
+    grid-column: 1 !important;
   }
 }
