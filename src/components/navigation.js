@@ -14,9 +14,9 @@ const Navigation = () => {
   const onChange = () => {
     setOpen(!open);
   }
-  function useOutsideAlerter(ref){
+  function useOutsideAlerter(ref) {
     useEffect(() => {
-      
+
       function handleClickOutside(event) {
         if (ref.current && !ref.current.contains(event.target)) {
           setOpen(false);
@@ -38,6 +38,10 @@ const Navigation = () => {
                     slug
                     title
                   }
+                ... on ContentfulExternalLink{
+                  title
+                  link
+                }
               }
             }
           }
@@ -66,7 +70,9 @@ const Navigation = () => {
         {nav && nav.links.map(p => (
           p.slug === "/" ?
             <Link key={p.slug} to={p.slug}><li>{nav && nav.title}</li></Link> :
-            <Link key={p.slug} to={"/" + p.slug}><li>{p.title}</li></Link>
+            p.link ?
+              <li><a href={p.link} target="_blank">{p.title}</a></li> :
+              <Link key={p.slug} to={"/" + p.slug}><li>{p.title}</li></Link>
         ))}
       </ul>
 
