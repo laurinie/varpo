@@ -9,7 +9,7 @@ import SEO from "../components/SEO";
 import Highlighted from "../components/higlighted"
 
 const RootIndex = (props) => {
-  const renderBlock = (block, grid, from) => {
+  const renderBlock = (block,from) => {
     if (block.title !== "empty") {
       if (block.slug) {
         return (
@@ -20,7 +20,7 @@ const RootIndex = (props) => {
                 <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z" /><path d="M0 0h24v24H0V0z" fill="none" /></svg>
               </div>
               <div
-                className={pageStyles.block}
+                className={pageStyles.linkblock}
                 dangerouslySetInnerHTML={{
                   __html: block.description.childMarkdownRemark.html,
                 }}
@@ -60,7 +60,7 @@ const RootIndex = (props) => {
         <h1 className="section-headline">{post.title}</h1>
         <div className={pageStyles.blocks} style ={{display:"grid",gridTemplateColumns:"repeat("+post.gridSize+",1fr)"}}>
           {post.blocks.map(block => (
-            renderBlock(block, post.gridSize,post.slug)
+            renderBlock(block,post.slug)
           ))}
         </div>
       </div>
