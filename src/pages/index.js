@@ -7,17 +7,17 @@ import pageStyles from "./page.module.css";
 import Link from 'gatsby-link'
 import SEO from "../components/SEO";
 import Highlighted from "../components/higlighted"
+import { Arrow } from "../components/svgs";
 
 const RootIndex = (props) => {
   const renderBlock = (block,from) => {
     if (block.title !== "empty") {
       if (block.slug) {
         return (
-          <div className={pageStyles.indexblock} key={block.slug} style={block.widthInGrids&&{gridColumn:1+"/"+parseInt(block.widthInGrids+1)}}>
-            <Link to={`/${block.slug}`} state={{ from: from }}>
+            <Link to={`/${block.slug}`} state={{ from: from }} className={pageStyles.indexblock} key={block.slug} style={block.widthInGrids&&{gridColumn:1+"/"+parseInt(block.widthInGrids+1)}}>
               <div className={pageStyles.link}>
                 <h1>{block.title}</h1>
-                <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z" /><path d="M0 0h24v24H0V0z" fill="none" /></svg>
+                <Arrow/>
               </div>
               <div
                 className={pageStyles.linkblock}
@@ -26,7 +26,6 @@ const RootIndex = (props) => {
                 }}
               />
             </Link>
-          </div>
         )
       } else {
         return (
@@ -51,9 +50,10 @@ const RootIndex = (props) => {
         description={post.descriptionToLink}
         pathname={post.slug}
         article={false}
+        banner={post.coverImage && post.coverImage.file.src}
       />
       <div className={pageStyles.cover}>
-        <NonStretchedImage className={pageStyles.coverImage} objectFit={"contain"} fluid={post.coverImage.fluid} />
+        <NonStretchedImage className={pageStyles.coverImage} objectFit={"contain"} fluid={post.coverImage.fluid} file={post.coverImage.file}/>
         <Highlighted highlighted={post.highlighted} />
       </div>
       <div className="wrapper">
@@ -78,6 +78,10 @@ export const pageQuery = graphql`
       title
       gridSize
       coverImage {
+        file {
+          contentType
+          url
+        }
         fluid(quality: 100) {
           src
         }

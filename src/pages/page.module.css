@@ -9,8 +9,6 @@
 .indexblock {
   padding: 10px;
   overflow: hidden;
-}
-.indexblock a {
   text-decoration: none;
 }
 
@@ -25,7 +23,7 @@
 
 .link {
   display: flex;
-  color: rgb(92, 0, 0);
+  color: rgb(0, 0, 0);
 }
 .link svg{
   margin-bottom: auto;
@@ -34,7 +32,6 @@
 
 .cover {
   position: relative;
-  /* background: rgb(138, 18, 18); */
   color: #b7b7b7;
   text-align: center;
 }
@@ -42,7 +39,6 @@
 .coverImage {
   height: 61.8vh;
   max-height: 400px;
-  /* background-color: red; */
   min-height: 300px;
 }
 .back{
@@ -56,6 +52,10 @@
   max-width:600px;
   max-height: 600px;
   object-fit: scale-down;
+}
+.linkblock h1{
+  font-weight: normal;
+  color: #ff0000;
 }
 
 @media (max-width: 700px){

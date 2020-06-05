@@ -1,5 +1,4 @@
 import React from 'react'
-import Helmet from 'react-helmet'
 import get from 'lodash/get'
 import { graphql } from "gatsby"
 import NonStretchedImage from "../components/NonStretchedImage";
@@ -7,17 +6,17 @@ import Layout from "../layouts/index";
 import Link from 'gatsby-link'
 import pageStyles from "../pages/page.module.css";
 import SEO from "../components/SEO";
+import { Arrow } from "../components/svgs";
 
 class PageTemplate extends React.Component {
   renderBlock(block,from) {
     if (block.title !== "empty") {
       if (block.slug) {
         return (
-          <div className={pageStyles.indexblock} key={block.slug} style={block.widthInGrids&&{gridColumn:1+"/"+parseInt(block.widthInGrids+1)}}>
-            <Link to={`/${block.slug}`} state={{ from: from }}>
+            <Link to={`/${block.slug}`} state={{ from: from }} className={pageStyles.indexblock} key={block.slug} style={block.widthInGrids&&{gridColumn:1+"/"+parseInt(block.widthInGrids+1)}}>
               <div className={pageStyles.link}>
                 <h1>{block.title}</h1>
-                <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z" /><path d="M0 0h24v24H0V0z" fill="none" /></svg>
+                <Arrow/>
               </div>
               <div
                 className={pageStyles.linkblock}
@@ -25,8 +24,7 @@ class PageTemplate extends React.Component {
                   __html: block.description.childMarkdownRemark.html,
                 }}
               />
-            </Link>
-          </div>
+              </Link>
         )
       } else {
         return (
@@ -52,13 +50,12 @@ class PageTemplate extends React.Component {
           description={post.descriptionToLink}
           pathname={post.slug}
           article={true}
-          // banner={post.coverImage && post.coverImage.fluid && post.coverImage.fluid.src}
+          banner={post.coverImage && post.coverImage.file.src}
         />
         <div>
-          {/* <Helmet title={post.title} /> */}
           <div className={pageStyles.cover}>
+            {post.coverImage && <NonStretchedImage className={pageStyles.coverImage} objectFit={"cover"} fluid={post.coverImage.fluid} file={post.coverImage.file}/>}
             {post.highlighted && <h2 className={pageStyles.highlighted}>{post.highlighted}</h2>}
-            {post.coverImage && <NonStretchedImage className={pageStyles.coverImage} objectFit={"cover"} fluid={post.coverImage.fluid} />}
           </div>
           <div className="wrapper">
             <Link to={this.props.pathContext.from} className={pageStyles.back}><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z" /><path d="M0 0h24v24H0V0z" fill="none" /></svg>Takaisin</Link>
@@ -82,6 +79,10 @@ query PageBySlug($slug: String!) {
     slug
     title
     coverImage {
+      file {
+        contentType
+        url
+      }
       fluid(quality: 100) {
         src
       }

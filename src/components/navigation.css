@@ -22,10 +22,11 @@ nav ul {
     background-color: #fff;
     position: absolute;
     box-shadow: -6px 0px 20px black;
-   
+    backdrop-filter: blur(10px);
 }
-@media (max-width: 500px){
-    nav ul{
+
+@media (max-width: 500px) {
+    nav ul {
         width: 100%;
     }
 }
@@ -36,7 +37,7 @@ nav button {
 }
 
 nav h3 {
-    margin: 2px;
+    margin: 10px;
 }
 
 nav img {
@@ -46,11 +47,19 @@ nav img {
 }
 
 nav svg {
-    padding: 5px;
+    margin: 10px;
 }
 
 nav li {
     padding: 10px;
+    display: flex;
+    color: white;
+    text-shadow: 1px 1px 20px black;
+}
+
+nav li svg {
+    margin-bottom: auto;
+    margin-top: auto;
 }
 
 nav li:hover {
@@ -61,9 +70,11 @@ nav li:hover {
 nav a {
     word-wrap: none;
     text-decoration: none;
+    font-size: x-large;
+    /* color: white; */
 }
 
-.selected {
-    background-color: #009688;
-    border-radius: 0px 0px 5px 5px;
+.backdrop {
+    height: 100%;
+    backdrop-filter: blur(10px);
 }

@@ -14,5 +14,5 @@ export default(props)=>{
       }
     }
   
-    return <Img imgStyle={{objectFit: props.objectFit}} {...normalizedProps} />
+    return props.file.contentType==="image/svg+xml"?<img src={props.file.url} alt=""/>:<Img imgStyle={{objectFit: props.objectFit}} {...normalizedProps} />
   }

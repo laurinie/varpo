@@ -8,9 +8,9 @@
 }
 .flag-link{
     padding: 10px;
-    background-color: #009688;
+    background-color: #1a1a1a;
+    color:white
 }
 .flag-link span{
-    text-decoration: underline;
     cursor: pointer;
 }
