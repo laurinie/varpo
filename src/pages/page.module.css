@@ -10,6 +10,9 @@
   padding: 10px;
   overflow: hidden;
   text-decoration: none;
+  max-width: 650px;
+  min-width: 300px;
+  margin: 15px;
 }
 
 .indexblock:hover {
@@ -25,7 +28,8 @@
   display: flex;
   color: rgb(0, 0, 0);
 }
-.link svg{
+
+.link svg {
   margin-bottom: auto;
   margin-top: auto;
 }
@@ -41,33 +45,37 @@
   max-height: 400px;
   min-height: 300px;
 }
-.back{
+
+.back {
   text-decoration: none;
 }
-.blocks{
+
+.blocks {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
-.linkblock img{
-  max-width:600px;
+
+.linkblock img {
+  max-width: 600px;
   max-height: 600px;
   object-fit: scale-down;
 }
-.linkblock h1{
+
+.linkblock h1 {
   font-weight: normal;
   color: #ff0000;
 }
 
-@media (max-width: 700px){
-  .blocks{
+@media (max-width: 700px) {
+  .blocks {
     grid-template-columns: 1fr !important
   }
-  .block img{
+  .block img {
     max-height: 200px;
     width: auto;
   }
-  .indexblock,
-  .block{
+  .indexblock, .block {
     grid-column: 1 !important;
   }
 }

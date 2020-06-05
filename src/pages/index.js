@@ -10,26 +10,31 @@ import Highlighted from "../components/higlighted"
 import { Arrow } from "../components/svgs";
 
 const RootIndex = (props) => {
-  const renderBlock = (block,from) => {
+  const renderBlock = (block, from) => {
     if (block.title !== "empty") {
       if (block.slug) {
         return (
-            <Link to={`/${block.slug}`} state={{ from: from }} className={pageStyles.indexblock} key={block.slug} style={block.widthInGrids&&{gridColumn:1+"/"+parseInt(block.widthInGrids+1)}}>
-              <div className={pageStyles.link}>
-                <h1>{block.title}</h1>
-                <Arrow/>
-              </div>
-              <div
-                className={pageStyles.linkblock}
-                dangerouslySetInnerHTML={{
-                  __html: block.description.childMarkdownRemark.html,
-                }}
-              />
-            </Link>
+          <Link
+            to={`/${block.slug}`}
+            state={{ from: from }}
+            className={pageStyles.indexblock}
+            key={block.slug}
+          >
+            <div className={pageStyles.link}>
+              <h1>{block.title}</h1>
+              <Arrow />
+            </div>
+            <div
+              className={pageStyles.linkblock}
+              dangerouslySetInnerHTML={{
+                __html: block.description.childMarkdownRemark.html,
+              }}
+            />
+          </Link>
         )
       } else {
         return (
-          <div className={pageStyles.block} key={block.title} style={block.widthInGrids&&{gridColumn:1+"/"+parseInt(block.widthInGrids+1)}}>
+          <div className={pageStyles.block} key={block.title} >
             <h1>{block.title}</h1>
             <div
               className={pageStyles.block}
@@ -53,14 +58,16 @@ const RootIndex = (props) => {
         banner={post.coverImage && post.coverImage.file.src}
       />
       <div className={pageStyles.cover}>
-        <NonStretchedImage className={pageStyles.coverImage} objectFit={"contain"} fluid={post.coverImage.fluid} file={post.coverImage.file}/>
+        <NonStretchedImage className={pageStyles.coverImage} objectFit={"contain"} fluid={post.coverImage.fluid} file={post.coverImage.file} />
         <Highlighted highlighted={post.highlighted} />
       </div>
       <div className="wrapper">
         <h1 className="section-headline">{post.title}</h1>
-        <div className={pageStyles.blocks} style ={{display:"grid",gridTemplateColumns:"repeat("+post.gridSize+",1fr)"}}>
+        <div
+          className={pageStyles.blocks}
+        >
           {post.blocks.map(block => (
-            renderBlock(block,post.slug)
+            renderBlock(block, post.slug)
           ))}
         </div>
       </div>
@@ -76,7 +83,6 @@ export const pageQuery = graphql`
     contentfulPage(slug: {eq: "/"}) {
       slug
       title
-      gridSize
       coverImage {
         file {
           contentType
@@ -91,7 +97,7 @@ export const pageQuery = graphql`
       blocks {
         ... on ContentfulBlock {
           title
-          widthInGrids
+          maxWidth
           content {
             childMarkdownRemark {
               html
@@ -100,7 +106,7 @@ export const pageQuery = graphql`
         }
         ... on ContentfulPage {
         title
-        widthInGrids
+        maxWidth
         description{
           childMarkdownRemark {
           html

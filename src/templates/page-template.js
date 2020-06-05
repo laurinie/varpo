@@ -9,26 +9,37 @@ import SEO from "../components/SEO";
 import { Arrow } from "../components/svgs";
 
 class PageTemplate extends React.Component {
-  renderBlock(block,from) {
+  renderBlock(block, from) {
+    console.log(block)
     if (block.title !== "empty") {
       if (block.slug) {
         return (
-            <Link to={`/${block.slug}`} state={{ from: from }} className={pageStyles.indexblock} key={block.slug} style={block.widthInGrids&&{gridColumn:1+"/"+parseInt(block.widthInGrids+1)}}>
-              <div className={pageStyles.link}>
-                <h1>{block.title}</h1>
-                <Arrow/>
-              </div>
-              <div
-                className={pageStyles.linkblock}
-                dangerouslySetInnerHTML={{
-                  __html: block.description.childMarkdownRemark.html,
-                }}
-              />
-              </Link>
+          <Link
+            to={`/${block.slug}`}
+            state={{ from: from }}
+            className={pageStyles.indexblock}
+            key={block.slug}
+            style={{ maxWidth: block.maxWidth }}
+          >
+            <div className={pageStyles.link}>
+              <h1>{block.title}</h1>
+              <Arrow />
+            </div>
+            <div
+              className={pageStyles.linkblock}
+              dangerouslySetInnerHTML={{
+                __html: block.description.childMarkdownRemark.html,
+              }}
+            />
+          </Link>
         )
       } else {
         return (
-          <div className={pageStyles.block} key={block.title} style={block.widthInGrids&&{gridColumn:1+"/"+parseInt(block.widthInGrids+1)}}>
+          <div
+            className={pageStyles.block}
+            key={block.title}
+            style={{ maxWidth: block.maxWidth }}
+          >
             <h1>{block.title}</h1>
             <div
               className={pageStyles.block}
@@ -54,12 +65,12 @@ class PageTemplate extends React.Component {
         />
         <div>
           <div className={pageStyles.cover}>
-            {post.coverImage && <NonStretchedImage className={pageStyles.coverImage} objectFit={"cover"} fluid={post.coverImage.fluid} file={post.coverImage.file}/>}
+            {post.coverImage && <NonStretchedImage className={pageStyles.coverImage} objectFit={"cover"} fluid={post.coverImage.fluid} file={post.coverImage.file} />}
             {post.highlighted && <h2 className={pageStyles.highlighted}>{post.highlighted}</h2>}
           </div>
           <div className="wrapper">
             <Link to={this.props.pathContext.from} className={pageStyles.back}><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z" /><path d="M0 0h24v24H0V0z" fill="none" /></svg>Takaisin</Link>
-            <div className={pageStyles.blocks} style={{ display: "grid", gridTemplateColumns: "repeat(" + post.gridSize + ",1fr)" }}>
+            <div className={pageStyles.blocks}>
               {post.blocks.map(block => (
                 this.renderBlock(block, post.slug)
               ))}
@@ -94,11 +105,11 @@ query PageBySlug($slug: String!) {
         html
       }
     }
-    widthInGrids
-    gridSize
+    maxWidth
     blocks {
       ... on ContentfulBlock {
         title
+        maxWidth
         content {
           childMarkdownRemark {
             html
@@ -107,6 +118,7 @@ query PageBySlug($slug: String!) {
       }
       ... on ContentfulPage {
         title
+        maxWidth
         description{
           childMarkdownRemark {
           html
