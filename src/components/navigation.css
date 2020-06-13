@@ -23,6 +23,7 @@ nav ul {
     position: absolute;
     box-shadow: -6px 0px 20px black;
     backdrop-filter: blur(10px);
+    overflow: scroll;
 }
 
 @media (max-width: 500px) {
@@ -70,11 +71,9 @@ nav li:hover {
 nav a {
     word-wrap: none;
     text-decoration: none;
-    font-size: x-large;
-    /* color: white; */
 }
 
 .backdrop {
-    height: 100%;
+    height: auto;
     backdrop-filter: blur(10px);
 }
