@@ -54,8 +54,9 @@ nav svg {
 nav li {
     padding: 10px;
     display: flex;
-    color: white;
-    text-shadow: 1px 1px 20px black;
+    font-size: larger;
+    /* color: white; */
+    /* text-shadow: 1px 1px 20px black; */
 }
 
 nav li svg {

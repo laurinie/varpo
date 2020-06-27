@@ -67,13 +67,13 @@ const Navigation = () => {
       <ul
         style={{
           display: !open && "none",
-          backgroundImage: `url(${nav.backgroundImage.fluid.src})`,
+          // backgroundImage: `url(${nav.backgroundImage.fluid.src})`,
           backgroundPosition: 'center',
           backgroundSize: 'cover',
           backgroundRepeat: 'no-repeat'
         }}
         ref={wrapperRef}>
-        <div className="backdrop">
+        {/* <div className="backdrop"> */}
 
           <button onClick={onChange}>
             {
@@ -89,7 +89,7 @@ const Navigation = () => {
                 <li><a href={p.link} target="_blank" rel="noopener noreferrer">{p.title}</a><Arrow color="white" /></li> :
                 <Link key={p.slug} to={"/" + p.slug}><li>{p.title}<Arrow color="white" /></li></Link>
           ))}
-        </div>
+        {/* </div> */}
       </ul>
 
     </nav>
